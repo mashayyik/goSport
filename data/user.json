@@ -1,0 +1,14 @@
+[
+    {
+        "username":"hayyik",
+        "password": "hayyik123",
+        "role" : "provider",
+        "email": "mashayyik@gmail.com"
+    },
+    {
+        "username": "macnesa",
+        "password": "macnesa123",
+        "role" : "user",
+        "email" : "mmacnesa@gmail.com"
+    }
+]
