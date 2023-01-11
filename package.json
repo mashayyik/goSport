@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mashayyik/goSport/issues"
   },
-  "homepage": "https://github.com/mashayyik/goSport#readme"
+  "homepage": "https://github.com/mashayyik/goSport#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
