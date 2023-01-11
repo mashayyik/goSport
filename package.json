@@ -1,0 +1,19 @@
+{
+  "name": "gosport",
+  "version": "1.0.0",
+  "description": "Sport Booking Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mashayyik/goSport.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mashayyik/goSport/issues"
+  },
+  "homepage": "https://github.com/mashayyik/goSport#readme"
+}
