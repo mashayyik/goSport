@@ -1,16 +1,24 @@
-<div class="container flex flex-wrap items-center justify-between mx-auto">
-  <a href="/" class="flex items-center">
-      <p class="self-center text-xl font-semibold whitespace-nowrap">go</p>
-      <span class="self-center text-xl font-semibold whitespace-nowrap text-blue-700">Sport</span>
-  </a>
-    <div>
+<div class="ml-20 container flex flex-wrap items-center justify-between mx-auto text-2xl">
+    <div> 
       <ul class="flex flex-col p-4 mt-4">
+        <% if(name){ %>
+          <li>
+            <p class="block py-2 pl-3 pr-4 text-black">Hi, <b><%= name %></b></p>
+          </li>
+            <% } %>  
         <li>
           <a href="/" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">Home</a>
         </li>
+        <% if(name){ %>
+          <li>
+            <a href="/auth/logout" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">logout</a>
+          </li>
+        <% } else { %>
         <li>
           <a href="/auth/login" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">Login</a>
         </li>
+        <% } %> 
       </ul>
     </div>
   </div>
+ 
