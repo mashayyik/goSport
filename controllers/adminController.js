@@ -18,6 +18,7 @@ class AdminController {
     static home(req, res){
         const id = req.session.userId
         // const id = 1
+        const session = req.session
         let data = []
         let ownerFields = []
 
@@ -53,7 +54,7 @@ class AdminController {
         })
         .then(owner =>{
             // res.send({owner, data})
-            res.render('dashboard', {owner, data})
+            res.render('dashboard', {owner,session, data})
         })
         .catch(err => res.send(err))
     }
@@ -142,6 +143,7 @@ goSport
     //MENAMPILKAN LIST BOOKING WHERE DATE >= HARI INI
     static currentTransaction(req, res){
             const id = req.session.userId
+            const session = req.session
             // const id = 1
             let data = []
             let ownerFields = []
@@ -182,8 +184,8 @@ goSport
                 data = allTransaction
                 return User.findByPk(id)
             })
-            .then(owner =>{ 
-                res.render('onGoingBooking', {owner, data})
+            .then(owner =>{
+                res.render('onGoingBooking', {session, owner, data})
             })
             .catch(err => res.send(err)) 
     }
@@ -213,6 +215,7 @@ goSport
     }
 
     static showFields(req, res){
+        const session = req.session
         const id = req.session.userId
         let fields = []
         Field.findAll({
@@ -229,7 +232,7 @@ goSport
             })
             .then(user =>{
                 // res.send({fields, user})
-                res.render('fields', {fields, user})
+                res.render('fields', {fields, session, user})
             })
             .catch(err => res.send(err))
         

@@ -9,9 +9,10 @@
 </head>
 <body>
     <div class="w-[80%] mx-auto">
+        <%- include('partials/_navbar') %> 
         <div class="m-10 text-center bold">
         </div> 
-        <div class="text-4xl bold text-center">SCHEDULE BOOKING</div>
+         <div class="m-5 text-3xl text-center bold"><%= session.username %>'s Field Assets</div>
         <div class="m-3 flex">
             <div class="flex">
             <a href="/dashboard/addField" class="mx-2 text-black bg-yellow-400 p-2 rounded-lg hover:bg-yellow-500">Add New Field</a></div>

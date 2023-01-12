@@ -9,10 +9,11 @@
 </head>
 <body>
     <div class="w-[80%] mx-auto">
-        <div class="m-10 text-4xl text-center bold">Welcome, <%= owner.username %></div>
+        <%- include('partials/_navbar') %> 
+        <div class="m-5 text-3xl text-center bold"><%= owner.username %>'s Dashboard</div>
+        <div class="text-md text-center bold">booking pending list</div>
         <div class="m-10 text-center bold">
         </div> 
-        <div class="text-4xl bold text-center">Pending Booking List %></div>
         <div class="m-3 flex">
             <div class="flex">
             <a href="/dashboard/fields" class="mx-2 text-black bg-yellow-400 p-2 rounded-lg hover:bg-yellow-500">My Fields</a></div>
