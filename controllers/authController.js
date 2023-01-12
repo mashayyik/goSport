@@ -37,7 +37,6 @@ class AuthController {
                 }
         })
         .catch(err => {
-            console.log(err);
             res.send(err)})
     }
     static getRegister(req, res){
@@ -93,10 +92,7 @@ class AuthController {
         .then(data => {  
             return UserDetail.create({name, gender, CityId, dateOfBirth, UserId: data.id })
         })
-        .then(() => {
-            console.log('user detail masuk');
-            res.send('sukses register')
-        })
+        .then((_) => res.redirect('/'))
         .catch(err => {
             if(err.name == 'SequelizeValidationError'){
             errors = err.errors.map(el => el.message)
@@ -105,6 +101,11 @@ class AuthController {
                 res.send(err)
             }
         }) 
+    }
+    static logout(req, res){
+        req.session.destroy()
+            .then((_) => res.redirect('/'))
+            .catch(err => res.send(err))
     }
 }
 

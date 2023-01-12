@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const Controller = require('../controllers');
+const AuthController = require('../controllers/authController');
 
 
 
@@ -30,7 +31,7 @@ const Controller = require('../controllers');
 // BERISI SEMUA ROUTER YANG BUTUH AUTH LOGIN  (SESSION && SESSION.ROLE :USER)
 router.use('/', require('./user'))
 
-
+router.get('/logout', AuthController.logout)
 
 
 module.exports = router

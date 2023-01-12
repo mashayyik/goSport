@@ -32,8 +32,8 @@ class AdminController {
             // return User.findByPk(+id)
         })
         .then(user =>{
-            // res.send({user, data})
-            res.render('dashboard', {user, data})
+            res.send({user, data})
+            // res.render('dashboard', {user, data})
         })
         .catch(err => res.send(err)) 
     }
@@ -71,7 +71,7 @@ class AdminController {
             }
             transporter.sendMail(mailOption, (err, info) =>{
                 if(err) return res.send(err)
-                res.send(`sukses`)
+                .then((_) => res.redirect('/dashboard'))
             })
         })
         .catch(err => res.send(err))  
@@ -99,7 +99,7 @@ class AdminController {
             }
             transporter.sendMail(mailOption, (err, info) =>{
                 if(err) return res.send(err)
-                res.send(`sukses`)
+                .then((_) => res.redirect('/dashboard'))
             })
         })
         .catch(err => res.send(err))  
@@ -155,9 +155,7 @@ class AdminController {
         const {name, price, CityId, CategoryId, imageUrl} = req.body;
         const UserId = req.session.userId
         Field.create({name, price, CityId, CategoryId, UserId, imageUrl})
-        .then(() => {
-            res.send('sukses add field')
-        })
+        .then((_) => res.redirect('/'))
         .catch(err => {
             res.send(err)
         }) 
