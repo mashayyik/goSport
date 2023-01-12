@@ -5,29 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
-    <title>Ongoing List</title>
+    <title>Document</title>
 </head>
 <body>
     <div class="w-[80%] mx-auto">
-        <div class="m-10 text-4xl text-center bold">Welcome, <%= user.username %></div>
+        <div class="m-10 text-4xl text-center bold">Welcome, <%= owner.username %></div>
         <div class="m-10 text-center bold">
         </div> 
-        <div class="text-4xl bold text-center">SCHEDULE WAITING LIST</div>
-        <div class="m-3">
-            
-            <a href="/dashboard" class="text-white bg-green-700 p-2 rounded-lg hover:bg-green-900">GO TO PENDING LIST</a></div>
+        <div class="text-4xl bold text-center">SCHEDULE BOOKING></div>
+        <div class="m-3 flex">
+            <div class="flex">
+            <a href="/dashboard/addField" class="mx-2 text-black bg-yellow-400 p-2 rounded-lg hover:bg-yellow-500">Add New Field</a></div>
+            <a href="/dashboard" class="text-white mx-2 bg-green-700 p-2 rounded-lg hover:bg-green-900">Back to Dashboard</a></div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 ">
                     <thead class="text-xs text-white uppercase bg-blue-500">
                         <tr>
                             <th scope="col" class="px-6 py-3">
+                                Booked Date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Name of Field
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Name of Customer
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Booked Date
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Duration
@@ -38,20 +39,23 @@
                             <th scope="col" class="px-6 py-3">
                                 Description
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                Status
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-
                          <% data.forEach((el, index) => { %>
+                            
                         <tr class="bg-white border-b ">
+                            <td class="px-6 py-4">
+                                <%= el.formattedBookedDate %> 
+                            </td>
                             <td class="px-6 py-4">
                                 <%= el.Field.name %> 
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.Field.User.username %> 
-                            </td>
-                            <td class="px-6 py-4">
-                                <%= el.date %> 
+                                <%= el.User.username %> 
                             </td>
                             <td class="px-6 py-4">
                                 <%= el.duration %> 
@@ -62,8 +66,10 @@
                             <td class="px-6 py-4">
                                 <%= el.description %> 
                             </td>
+                            <td class="px-6 py-4">
+                               Approve
+                            </td>
                         </tr>
-
                          <% }) %> 
                 </table>
         </div>
