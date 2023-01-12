@@ -23,6 +23,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "file-base64": "^1.0.0",
+    "nodemailer": "^6.9.0",
     "pg": "^8.8.0",
     "sequelize": "^6.28.0"
   }

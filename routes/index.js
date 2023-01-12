@@ -14,13 +14,13 @@ const Controller = require('../controllers');
   
   
   // MIDDLE WARE
-  // router.use((req, res, next) =>{
-  //   console.log(req.session)
-  //   if(!req.session.userId){
-  //     return res.redirect('/auth/login?errors=Please Login First')
-  //   }
-  //   next()
-  // })
+  router.use((req, res, next) =>{
+    console.log(req.session)
+    if(!req.session.userId){
+      return res.redirect('/auth/login?errors=Please Login First')
+    }
+    next()
+  })
 
   
 

@@ -1,7 +1,7 @@
 
  const { Field , Category, User, City, Transaction} = require('../models');
 
-const { Op } = require("sequelize");
+const { Op } = require("sequelize"); 
 const rupiah  = require('../helpers/rupiah'); 
 
 class Controller {
@@ -66,7 +66,7 @@ class Controller {
         })
         .then(data => {
             // res.send(data)
-            res.render('detailField' , {data, name, rupiah, ago})
+            res.render('detailField' , {data, name, rupiah})
         })
         .catch(err =>  res.send(err))
     }

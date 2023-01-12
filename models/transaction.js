@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Transaction.belongsTo(models.Field)
+      Transaction.belongsTo(models.User)
       // define association here
     }
     get formattedBookedDate(){
