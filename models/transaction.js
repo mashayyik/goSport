@@ -20,6 +20,23 @@ module.exports = (sequelize, DataTypes) => {
     get formattedBookedDate(){
       return this.date.toLocaleString("en-US", {dateStyle:'full', timeStyle:'medium'}) 
     } 
+
+    get durationWords(){
+      let word = `${this.duration} Hour`
+      if(this.duration > 1)  word += 's' 
+      return word
+    }
+
+    get statusName(){
+      switch(this.status){
+        case 0:
+          return 'Pending'
+        case 1:
+          return 'Approved'
+        case 2:
+          return 'Rejected'
+      }
+    }
   }
   Transaction.init({
     UserId: DataTypes.INTEGER,

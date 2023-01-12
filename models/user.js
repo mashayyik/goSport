@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull:false,
       unique:{
-        msg:"Username Already Used"
+        msg:"Email Already Used"
       },
       validate:{
         notNull:{
