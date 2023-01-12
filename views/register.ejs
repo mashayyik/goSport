@@ -8,13 +8,14 @@
   <title>Sign Up</title>
 </head>
 <body>
+  
   <div class="w-[80%] mx-auto">
-    <div class="flex">
-      <%- include('partials/_navbar') %>
-    </div> 
-    <p class="m-5 text-center text-3xl">Register</p>
-
-      <div class="w-[50%] m-10 p-10 mx-auto rounded-lg shadow-md bg-slate-200">
+    <div class="w-[50%] m-10 p-10 mx-auto rounded-lg shadow-md bg-slate-200">
+      <div class="mx-auto text-center flex justify-center items-center">
+        <p class="self-center text-4xl font-semibold whitespace-nowrap text-black">go</p>
+        <p class="self-center text-4xl font-semibold whitespace-nowrap text-blue-700">Sport</p>
+    </div>
+        <p class="mb-5 font-bold ml-20 text-center">● register</p>
         <form action="/auth/register" method="post">
          <div class="mx-auto text-center text-red-700">
           <%- include('partials/_requiredError') %> 
@@ -64,11 +65,14 @@
                   <% }) %>
                 </select>
               </div>
-              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
+              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Register</button>
             </form>
             <div class="m-5 text text-center">
               already have account?
               <a href="/auth/login" class="p-2 m-2 bg-green-600 text-white rounded-lg">Sign in</a>
+            </div>
+            <div class="m-5 text text-center mt-10">
+              <a href="/" class="p-2 text-blue-700 rounded-lg">No, I want to login as guest</a>
             </div>
       </div>
   </div>

@@ -3,10 +3,13 @@
 
  const { Op } = require("sequelize");
 
+
 class Controller {
     static home(req, res){  
     //aku butuh data list of field, list of category
         const {search, categories} = req.query
+
+        let name = req.session.username
 
         let param = {
             include: [
@@ -47,13 +50,14 @@ class Controller {
             })
         })
         .then(categories => {
-            res.render('home', {fields, categories})
+            res.render('home', {fields, categories, name})
         })
         .catch(err =>  res.send(err))
     }
 
     static detailFieldById(req, res){ 
         // satu data lapangan dari id, 
+        const name = req.session.username
         let id = req.params.fieldId
         Field.findByPk(+id, {
             include : {
@@ -62,7 +66,7 @@ class Controller {
         })
         .then(data => {
             // res.send(data)
-            res.render('detailField' , {data})
+            res.render('detailField' , {data, name})
         })
         .catch(err =>  res.send(err))
     }

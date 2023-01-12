@@ -1,7 +1,5 @@
 
  const { Field , Category, User, City, UserDetail} = require('../models');
- const session = require('express-session')
-
 class AuthController {
     static home(req, res){
         res.redirect('/auth/login')
