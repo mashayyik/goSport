@@ -49,8 +49,8 @@ class Controller {
             })
         })
         .then(categories => {
-            // res.send(fields)
-            res.render('home', {fields, categories, name, rupiah})
+            // console.log(fields)
+            res.render('home', {Field, fields, categories, name, rupiah})
         })
         .catch(err =>  res.send(err))
     }

@@ -92,12 +92,15 @@ class AuthController {
         .then(data => {  
             return UserDetail.create({name, gender, CityId, dateOfBirth, UserId: data.id })
         })
-        .then((_) => res.redirect('/'))
+        .then((_) => res.redirect('/auth/login'))
         .catch(err => {
-            if(err.name == 'SequelizeValidationError'){
-            errors = err.errors.map(el => el.message)
+            if(err.name == 'SequelizeValidationError' || err.name == 'SequelizeUniqueConstraintError'){
+                errors = err.errors.map(el => el.message)
                 return res.redirect(`/auth/register?errors=${errors}`)
-            }else{
+            } 
+            
+            
+            else{
                 res.send(err)
             }
         }) 

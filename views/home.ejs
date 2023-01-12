@@ -49,7 +49,7 @@
                             <hr><br>
                             <a href="/fields/<%=el.id%>">
                                 <h5 class="mb-2 text-[20px] tracking-tight text-gray-900">by: <b> <%= el.User.username%></b></h5>
-                                <h5 class="mb-2 text-[15px] tracking-tight text-gray-900">uploaded : <b><%= el.ago() %></b> ago</h5>
+                                <h5 class="mb-2 text-[15px] tracking-tight text-gray-900">uploaded : <b><%= Field.ago(el.createdAt) %></b> ago</h5>
                             </a>
                                 <br><hr><br>
                                 <p class="mb-3 text-center font-normal text-gray-700"><b><%= el.transactionTotal %> </b>users have played on this course</p>
