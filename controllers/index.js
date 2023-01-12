@@ -1,5 +1,5 @@
 
- const { Field , Category, User, City} = require('../models');
+ const { Field , Category, User, City, Transaction} = require('../models');
 
  const { Op } = require("sequelize");
 
@@ -68,9 +68,16 @@ class Controller {
     }
 
     static postAddTransaction(req, res){
-        const {fieldId} = req.params
+        const FieldId = +req.params.fieldId
         const {UserId, date, duration, description} = req.body
-        res.send({fieldId, UserId, date, duration, description})
+        Transaction.create({UserId, FieldId, date, description, duration})
+        .then(() => { 
+            // res.render('detailField' , {data})
+            res.send('success')
+        })
+        .catch(err =>  res.send(err))
+
+        // res.send({fieldId, UserId, date, duration, description})
     }
     
     static getEditProfile(req, res){
