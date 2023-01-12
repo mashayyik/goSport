@@ -13,11 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       Transaction.belongsTo(models.Field)
       // define association here
     }
-
     get formattedBookedDate(){
       return this.date.toLocaleString("en-US", {dateStyle:'full', timeStyle:'medium'}) 
-    }
-
+    } 
   }
   Transaction.init({
     UserId: DataTypes.INTEGER,
@@ -54,8 +52,9 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Transaction',
     hooks : {
       beforeCreate : (data, option) => { 
-       data.status = 0
-       data.invoice =  0
+        console.log(data)
+       data.status = 0,
+       data.invoice = data.invoice * data.duration + (0.1 * data.invoice * data.duration)
       }
     }
   });

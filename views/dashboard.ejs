@@ -10,10 +10,14 @@
 <body>
     <div class="w-[80%] mx-auto">
         <div class="m-10 text-4xl text-center bold">Welcome, <%= user.username %></div>
-        <div class="m-10">
+        <div class="m-10 text-center bold">
+        </div> 
+        <div class="text-4xl bold text-center">Pending Booking List %></div>
+        <div class="m-3">
+            <a href="/dashboard/current-transaction" class="text-white bg-green-700 p-2 rounded-lg hover:bg-green-900">GO TO CURRENT BOOKING LIST</a></div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 ">
+                    <thead class="text-xs text-white uppercase bg-blue-500">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 No
@@ -44,7 +48,7 @@
                     <tbody>
                          <% data.forEach((el, index) => { %>
                             
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <tr class="bg-white border-b ">
                             <td class="px-6 py-4">
                                 <%= ++index %> 
                             </td>
@@ -67,8 +71,8 @@
                                 <%= el.description %> 
                             </td>
                             <td class="px-6 py-4">
-                               <a href="/dashboard/<%= el.id %>/approve" class="px-5 py-2 m-2 bg-green-600 text-white hover:bg-green-900">Accept</a>
-                               <a href="/dashboard/<%= el.id %>/reject" class="px-5 py-2 m-2 bg-red-600 text-white hover:bg-red-900">Reject</a>
+                               <a href="/dashboard/<%= el.id %>/approve" class="px-5 py-2 m-2 bg-green-600 rounded-md text-white hover:bg-green-900">Accept</a>
+                               <a href="/dashboard/<%= el.id %>/reject" class="px-5 py-2 m-2 bg-red-600 rounded-md text-white hover:bg-red-900">Reject</a>
                             </td>
                         </tr>
 
