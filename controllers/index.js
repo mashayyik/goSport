@@ -61,17 +61,16 @@ class Controller {
             }
         })
         .then(data => {
-            res.send(data)
+            // res.send(data)
+            res.render('detailField' , {data})
         })
         .catch(err =>  res.send(err))
     }
 
-    static getAddTransaction(req, res){
-        res.send('ok')
-    }
-
     static postAddTransaction(req, res){
-        res.send('ok')
+        const {fieldId} = req.params
+        const {UserId, date, duration, description} = req.body
+        res.send({fieldId, UserId, date, duration, description})
     }
     
     static getEditProfile(req, res){
