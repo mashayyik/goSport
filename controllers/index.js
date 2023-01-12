@@ -2,8 +2,7 @@
  const { Field , Category, User, City, Transaction} = require('../models');
 
 const { Op } = require("sequelize");
-const rupiah  = require('../helpers/rupiah');
-const ago = require('../helpers/ago');
+const rupiah  = require('../helpers/rupiah'); 
 
 class Controller {
     static home(req, res){  
@@ -51,7 +50,7 @@ class Controller {
         })
         .then(categories => {
             // res.send(fields)
-            res.render('home', {fields, categories, name, rupiah, ago})
+            res.render('home', {fields, categories, name, rupiah})
         })
         .catch(err =>  res.send(err))
     }
