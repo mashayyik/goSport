@@ -16,11 +16,33 @@ module.exports = (sequelize, DataTypes) => {
   Transaction.init({
     UserId: DataTypes.INTEGER,
     FieldId: DataTypes.INTEGER,
-    date: DataTypes.DATE,
+    date: {
+      type: DataTypes.DATE,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Date is Required"
+        },
+        notNull:{
+          msg:"Date is Required"
+        }
+      }
+    },
     description: DataTypes.STRING,
     status: DataTypes.INTEGER,
     invoice: DataTypes.INTEGER,
-    duration: DataTypes.INTEGER
+    duration: {
+      type: DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Role is Required"
+        },
+        notNull:{
+          msg:"Role is Required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Transaction',

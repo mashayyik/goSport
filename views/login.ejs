@@ -11,11 +11,11 @@
   <div class="w-[80%] mx-auto">
     <%- include('partials/_navbar') %> 
     <p class="m-5 text-center text-3xl">Login</p>
-
-    <p><%= error %></p>
-
       <div class="w-[50%] m-10 p-10 mx-auto rounded-lg shadow-md bg-slate-200">
         <form action="/auth/login" method="post">
+          <div class="mx-auto text-center text-red-700">
+            <%- include('partials/_requiredError') %> 
+           </div>
               <div class="mb-6">
                 <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
                 <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: user@gosport.com">

@@ -16,11 +16,58 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   UserDetail.init({
-    name: DataTypes.STRING,
-    gender: DataTypes.STRING,
-    CityId: DataTypes.INTEGER,
-    dateOfBirth: DataTypes.DATE,
-    UserId: DataTypes.INTEGER
+    name: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Fullname is Required"
+        },
+        notNull:{
+          msg:"Fullname is Required"
+        }
+      }
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"gender is Required"
+        },
+        notNull:{
+          msg:"gender is Required"
+        }
+      }
+    },
+    CityId: {
+      type: DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"City is Required"
+        },
+        notNull:{
+          msg:"City is Required"
+        }
+      }
+    },
+    dateOfBirth: {
+      type: DataTypes.BOOLEAN,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Date of Birth is Required"
+        },
+        notNull:{
+          msg:"Date of Birth is Required"
+        }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull:false
+    }
   }, {
     sequelize,
     modelName: 'UserDetail',
