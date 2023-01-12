@@ -1,4 +1,3 @@
-
  const { Field , Category, User, City, UserDetail} = require('../models');
  const bcrypt = require('bcryptjs');
 class AuthController {

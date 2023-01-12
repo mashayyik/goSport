@@ -20,8 +20,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull:false,
         references:{
-          model:"Fields"
-        }
+          model:"Fields",
+          key: "id",
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       date: {
         type: Sequelize.DATE,
