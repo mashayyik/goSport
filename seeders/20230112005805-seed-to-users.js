@@ -14,7 +14,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    let users =  JSON.parse(fs.readFileSync('./data/user.json', 'utf-8'))
+    let users =  JSON.parse(fs.readFileSync('./data/users.json', 'utf-8'))
                   .map(each => {
                     each.createdAt = each.updatedAt = new Date();
                     return each

@@ -18,8 +18,8 @@
     "duration":120
   },
   {
-    "UserId":3,
-    "FieldId":3,
+    "UserId":2,
+    "FieldId":2,
     "date":"2023-01-14",
     "description":"Bola nya yg baru ya",
     "status":0,
@@ -27,7 +27,7 @@
     "duration":120
   },
   {
-    "UserId":4,
+    "UserId":1,
     "FieldId":1,
     "date":"2023-01-14",
     "description":"Bershikan lapangan mas ",
