@@ -73,7 +73,8 @@ class Controller {
 
     static postAddTransaction(req, res){
         const FieldId = +req.params.fieldId
-        const {UserId, date, duration, description} = req.body
+        const {date, duration, description} = req.body
+        const UserId = req.session.userId
         Transaction.create({UserId, FieldId, date, description, duration})
         .then(() => { 
             // res.render('detailField' , {data})
