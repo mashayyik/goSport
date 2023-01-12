@@ -6,12 +6,12 @@ class AdminController {
     
      //MENAMPILKAN LIST BOOKING WHERE STATUS = 0
     static home(req, res){
-        // const id = req.session.userId
+        const id = req.session.userId
         Transaction.findAll({
             include: Field,
             where: {
                 status: 0,
-                UserId: 1 // ganti id
+                UserId: id  
             }
         })
         .then(data =>{
@@ -51,12 +51,12 @@ class AdminController {
 
     //MENAMPILKAN LIST BOOKING WHERE DATE >= HARI INI
     static currentTransaction(req, res){
-        // const id = req.session.userId
+        const id = req.session.userId
         Transaction.findAll({
             include: Field,
             where: {
                 date : {
-                    UserId: 3, //ganti ke session
+                    UserId: id,
                     [Op.gte]: new Date()
                 }
             }
@@ -68,11 +68,29 @@ class AdminController {
     }
 
     static addField(req, res){
-        res.send(ok)
+        let cities; 
+        City.findAll()
+        .then(data =>{
+            cities= data
+            return Category.findAll() 
+        })
+        .then(categories => { 
+            res.render('addField', {cities, categories})
+        })
+        .catch(err => res.send(err))  
     }
 
     static postAddField(req, res){
-        res.send(ok)
+        console.log(req.body);
+        const {name, price, CityId, CategoryId, imageUrl} = req.body;
+        const UserId = req.session.userId
+        Field.create({name, price, CityId, CategoryId, UserId, imageUrl})
+        .then(() => {
+            res.send('sukses add field')
+        })
+        .catch(err => {
+            res.send(err)
+        }) 
     }
     
 }

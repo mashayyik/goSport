@@ -27,6 +27,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Field',
+    hooks : {
+      beforeCreate : (data, option) => {  
+       data.transactionTotal = 0
+      }
+    }
   });
   return Field;
 };
