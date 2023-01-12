@@ -76,14 +76,18 @@ class Controller {
         const FieldId = +req.params.fieldId
         const {date, duration, description} = req.body
         const UserId = req.session.userId
-        Transaction.create({UserId, FieldId, date, description, duration})
+        Field.findByPk(FieldId, {
+            attributes:['price']
+        })
+        .then(field =>{
+            const invoice = field.price  
+            return Transaction.create({UserId, FieldId, date, description, duration, invoice})
+        })
         .then(() => { 
             // res.render('detailField' , {data})
             res.send('success')
         })
         .catch(err =>  res.send(err))
-
-        // res.send({fieldId, UserId, date, duration, description})
     }
     
     static getEditProfile(req, res){

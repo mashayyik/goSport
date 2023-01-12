@@ -8,7 +8,7 @@ class AdminController {
     static home(req, res){
         // const id = req.session.userId
         const id = 1
-        let transactions = []
+        let data = []
         Transaction.findAll({
             include: {
                 model:Field,
@@ -19,13 +19,13 @@ class AdminController {
                 UserId: id
             }
         })
-        .then(data =>{
-            transactions = data
+        .then(transactions =>{
+            data = transactions
             return User.findByPk(+id)
+        })
         .then(user =>{
             // res.send({user, data})
             res.render('dashboard', {user, data})
-        })
         })
         .catch(err => res.send(err)) 
     }
@@ -61,18 +61,31 @@ class AdminController {
 
     //MENAMPILKAN LIST BOOKING WHERE DATE >= HARI INI
     static currentTransaction(req, res){
-        const id = req.session.userId
+        // const id = req.session.userId
+        const id = 1
+        let data = []
         Transaction.findAll({
-            include: Field,
+            include: {
+                model:Field,
+                include:User
+            },
             where: {
+                UserId: id,
                 date : {
-                    UserId: id,
                     [Op.gte]: new Date()
+                },
+                status:{
+                    [Op.eq]:1
                 }
             }
         })
-        .then(data =>{
-            res.send(data)
+        .then(transactions =>{
+            data = transactions
+            return User.findByPk(+id)
+        })
+        .then(user =>{
+            // res.send({user, data})
+            res.render('onGoingBooking', {user, data})
         })
         .catch(err => res.send(err))  
     }
