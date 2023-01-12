@@ -1,6 +1,8 @@
 
  const { Field , Category, User, City, Transaction} = require('../models');
  const { Op } = require("sequelize");
+const rupiah = require('../helpers/rupiah');
+
  const nodemailer = require('nodemailer');
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -17,25 +19,42 @@ class AdminController {
         const id = req.session.userId
         // const id = 1
         let data = []
-        Transaction.findAll({
+        let ownerFields = []
+
+        Field.findAll({
+            where:{
+                UserId:id
+            }
+        })
+        .then(fields =>{
+           fields.forEach(el => {
+             ownerFields.push(el.id)
+           });
+          return Transaction.findAll({
+            where:{
+                status:0,
+            },
             include: [{
                 model:Field,
-                include:User
+                include:User,
+                where:{
+                  id:{
+                    [Op.or]:ownerFields
+                  }
+                }
             }, {
                 model:User
             }], 
         })
-        .then(transactions =>{
-            res.send(transactions)
-            // console.log(transactions);
-            data = transactions
-            // return User.findByPk(+id)
         })
-        .then(user =>{
-            res.send({user, data})
-            // res.render('dashboard', {user, data})
+        .then(allTransaction =>{
+            data = allTransaction
+            return User.findByPk(id)
         })
-        .catch(err => res.send(err)) 
+        .then(owner =>{
+            res.render('dashboard', {owner, data})
+        })
+        .catch(err => res.send(err))
     }
 
     //ROUTES UNTUK MENGAPROVE TRANSACTION (UBAH STATUS JADI 1)
@@ -67,11 +86,18 @@ class AdminController {
                 from: 'gosport.pairpoject@gmail.com',
                 to: `${transaction.User.email}`,
                 subject: `Booking untuk "${transaction.Field.name}" Sukses`,
-                text: `Selamat, Anda telah membooking"${transaction.Field.name}" untuk tanggal ${transaction.date} Sukses, invoice anda sebesar ${transaction.invoice}`
+                text: `Selamat!!
+Anda telah membooking"${transaction.Field.name}" untuk tanggal ${transaction.date} Sukses 
+invoice anda sebesar ${rupiah(transaction.invoice)}
+                
+Terimakasih
+Sincerely,
+goSport
+                `
             }
             transporter.sendMail(mailOption, (err, info) =>{
                 if(err) return res.send(err)
-                .then((_) => res.redirect('/dashboard'))
+                return res.redirect('/dashboard')
             })
         })
         .catch(err => res.send(err))  
@@ -95,11 +121,17 @@ class AdminController {
                 from: 'gosport.pairpoject@gmail.com',
                 to: `${transaction.User.email}`,
                 subject: `Booking untuk "${transaction.Field.name}" Gagal`,
-                text: `Maaf, "${transaction.Field.name}" untuk tanggal ${transaction.date} tidak bisa di proses`
+                text: `Maaf!!
+Booking "${transaction.Field.name}" untuk tanggal ${transaction.date} GAGAL
+                
+Terimakasih
+Sincerely,
+goSport
+                `
             }
             transporter.sendMail(mailOption, (err, info) =>{
                 if(err) return res.send(err)
-                .then((_) => res.redirect('/dashboard'))
+                return res.redirect('/dashboard')
             })
         })
         .catch(err => res.send(err))  
@@ -108,33 +140,51 @@ class AdminController {
 
     //MENAMPILKAN LIST BOOKING WHERE DATE >= HARI INI
     static currentTransaction(req, res){
-        const id = req.session.userId
-        // const id = 1
-        let data = []
-        Transaction.findAll({
-            include: {
-                model:Field,
-                include:User
-            },
-            where: {
-                UserId: id,
-                date : {
-                    [Op.gte]: new Date()
-                },
-                status:{
-                    [Op.eq]:1
+            const id = req.session.userId
+            // const id = 1
+            let data = []
+            let ownerFields = []
+    
+            Field.findAll({
+                where:{
+                    UserId:id
                 }
-            }
-        })
-        .then(transactions =>{
-            data = transactions
-            return User.findByPk(+id)
-        })
-        .then(user =>{
-            // res.send({user, data})
-            res.render('onGoingBooking', {user, data})
-        })
-        .catch(err => res.send(err))  
+            })
+            .then(fields =>{
+               fields.forEach(el => {
+                 ownerFields.push(el.id)
+               });
+              return Transaction.findAll({
+                order:[
+                    ['date', 'DESC']
+                ],
+                where:{
+                    status:1,
+                    date:{
+                        [Op.gte]: new Date()
+                    }
+                },
+                include: [{
+                    model:Field,
+                    include:User,
+                    where:{
+                      id:{
+                        [Op.or]:ownerFields
+                      }
+                    }
+                }, {
+                    model:User
+                }], 
+            })
+            })
+            .then(allTransaction =>{
+                data = allTransaction
+                return User.findByPk(id)
+            })
+            .then(owner =>{
+                res.render('onGoingBooking', {owner, data})
+            })
+            .catch(err => res.send(err)) 
     }
 
     static addField(req, res){
