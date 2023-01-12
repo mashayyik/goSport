@@ -2,7 +2,9 @@ const router = require('express').Router();
 
 const AdminController = require('../controllers/adminController');
 
-// halaman home buat admin
+// halaman home buat admin FIELD -> user.id
+// ditampilkan transasction yang field.User.id = admin
+// where status 0
 router.get('/', AdminController.home)
 
 
