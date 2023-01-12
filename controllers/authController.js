@@ -35,7 +35,11 @@ class AuthController {
         // res.send('ok')
     }
     static getRegister(req, res){
-        res.send('ok')
+       City.findAll()
+       .then(cities =>{
+        res.render('register', {cities})
+       })
+       .catch(err => res.send(err))
     }
 
     static postRegister(req, res){
