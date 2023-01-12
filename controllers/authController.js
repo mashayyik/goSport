@@ -103,11 +103,11 @@ class AuthController {
         }) 
     }
     static logout(req, res){
-        req.session.destroy()
-            .then((_) => res.redirect('/'))
-            .catch(err => res.send(err))
+        req.session.destroy(err =>{
+            if(err) return res.send(err)
+            return res.redirect('/')
+        })
     }
 }
 
 module.exports = AuthController
- 
