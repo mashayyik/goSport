@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="w-[80%] mx-auto">
-        <div class="m-10 text-4xl text-center bold">Welcome, <%= owner.username %></div>
-        <div class="m-10 text-center bold">
+        <%- include('partials/_navbar') %> 
+        <div class="m-5 text-3xl text-center bold"><%= owner.username %>'s Schedule</div>
+        <div class="text-md text-center bold">accepted queue list</div
         </div> 
-        <div class="text-4xl bold text-center">SCHEDULE BOOKING></div>
         <div class="m-3 flex">
             <div class="flex">
             < <a href="/dashboard/fields" class="mx-2 text-black bg-yellow-400 p-2 rounded-lg hover:bg-yellow-500">My Fields</a></div>

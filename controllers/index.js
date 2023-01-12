@@ -8,7 +8,7 @@ class Controller {
     static home(req, res){  
     //aku butuh data list of field, list of category
         const {search, categories} = req.query
-        let name = req.session.username
+        let session = req.session
 
         let param = {
             include: [
@@ -50,14 +50,14 @@ class Controller {
         })
         .then(categories => {
             // res.send(fields)
-            res.render('home', {fields, categories, name, rupiah})
+            res.render('home', {fields, categories, session, rupiah})
         })
         .catch(err =>  res.send(err))
     }
 
     static detailFieldById(req, res){ 
         // satu data lapangan dari id, 
-        const name = req.session.username
+        let session = req.session
         let id = req.params.fieldId
         Field.findByPk(+id, {
             include : {
@@ -66,7 +66,7 @@ class Controller {
         })
         .then(data => {
             // res.send(data)
-            res.render('detailField' , {data, name, rupiah})
+            res.render('detailField' , {data, session, rupiah})
         })
         .catch(err =>  res.send(err))
     }
@@ -87,13 +87,6 @@ class Controller {
             res.render('success')
         })
         .catch(err =>  res.send(err))
-    }
-    
-    static getEditProfile(req, res){
-        res.send('ok')
-    }
-    static postEditProfile(req, res){
-        res.send('ok')
     }
 }
 

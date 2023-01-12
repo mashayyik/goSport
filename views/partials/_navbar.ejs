@@ -1,18 +1,23 @@
-<div class="container text-2xl flex justify-between items-center">
+<div class="container text-xl flex justify-between items-center">
       <div class="flex flex-col p-4 mt-4">
-        <% if(name){ %>
+        <% if(session.username){ %>
           <div>
-            <p class="block py-2 pl-3 pr-4 text-black">Hi, <b><%= name %></b></p>
+            <p class="block py-2 pl-3 pr-4 text-black">Hi, <b><%= session.username %></b></p>
           </div>
             <% } %>  
         <div>
           <a href="/" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">Home</a>
         </div>
       </div>
+      <% if (session.role == 'provider') { %>
+        <div>
+          <a href="/dashboard" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">Dashboard</a>
+        </div>
+      <% } %>
       <div>
-        <% if(name){ %>
+        <% if(session.username){ %>
           <div>
-            <a href="/logout" class="block py-2 pl-3 pr-4  text-blue-600" aria-current="page">logout</a>
+            <a href="/logout" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">logout</a>
           </div>
         <% } else { %>
         <div>
@@ -21,4 +26,3 @@
         <% } %> 
       </div>
   </div>
- 
