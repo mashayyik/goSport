@@ -22,32 +22,22 @@ const AuthController = require('../controllers/authController');
     }
     next()
   })
-
-  const isAdmin = (req, res, next) =>{
-    console.log(req.session);
-    if(req.session.role == "provider"){
-      next()
-    }else{
-      res.redirect('/auth/login?errors=You dont have access to dashboard page')
-    }
-  }
-  const isUser = (req, res, next) =>{
-    console.log(req.session);
-    if(req.session.role == "user"){
-      next()
-    }else{
-      res.redirect('/auth/login?errors=Youre provider, cant book fields')
-    }
-  }
+  
+  
+  router.get('/logout',  (req, res) => {
+    req.session.destroy();
+    res.redirect('/auth/login');
+  });
   
 
+  router.use('/dashboard', require('./admin'))
   // BERISI SEMUA ROUTER YANG BUTUH AUTH LOGIN & ROLE ADMIN (SESSION && SESSION.ROLE :PROVIDER)
-  router.use('/dashboard', isAdmin, require('./admin'))
+  
 
-// BERISI SEMUA ROUTER YANG BUTUH AUTH LOGIN  (SESSION && SESSION.ROLE :USER)
-router.use('/', isUser, require('./user'))
+   // BERISI SEMUA ROUTER YANG BUTUH AUTH LOGIN  (SESSION && SESSION.ROLE :USER)
+   router.use('/', require('./user'))
 
-router.get('/logout', AuthController.logout)
+
 
 
 module.exports = router

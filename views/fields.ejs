@@ -4,80 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Document</title>
 </head>
 <body>
     <div class="w-[80%] mx-auto">
-        <div class="m-10 text-4xl text-center bold">Welcome, <%= owner.username %></div>
         <div class="m-10 text-center bold">
         </div> 
-        <div class="text-4xl bold text-center">Pending Booking List %></div>
+        <div class="text-4xl bold text-center">SCHEDULE BOOKING</div>
         <div class="m-3 flex">
             <div class="flex">
-            <a href="/dashboard/fields" class="mx-2 text-black bg-yellow-400 p-2 rounded-lg hover:bg-yellow-500">My Fields</a></div>
-            <a href="/dashboard/current-transaction" class="text-white mx-2 bg-green-700 p-2 rounded-lg hover:bg-green-900">GO TO CURRENT BOOKING LIST</a></div>
+            <a href="/dashboard/addField" class="mx-2 text-black bg-yellow-400 p-2 rounded-lg hover:bg-yellow-500">Add New Field</a></div>
+            <a href="/dashboard" class="text-white mx-2 bg-green-700 p-2 rounded-lg hover:bg-green-900">Back to Dashboard</a></div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 ">
                     <thead class="text-xs text-white uppercase bg-blue-500">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                No
+                                id
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Image
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Name of Field
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Name of Customer
+                                Category
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Booked Date
+                                Location
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Duration
+                                Price
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                invoice
+                                Transaction Total
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Description
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
+                                action
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                         <% data.forEach((el, index) => { %>
+                         <% fields.forEach((el, index) => { %>
                             
                         <tr class="bg-white border-b ">
                             <td class="px-6 py-4">
-                                <%= ++index %> 
+                                <%= el.id %> 
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.Field.name %> 
+                                <img src="<%= el.imageUrl%>" width="200px">
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.User.username %> 
+                                <%= el.name %> 
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.formattedBookedDate %> 
+                                <%= el.Category.name %> 
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.duration %> 
+                                <%= el.City.name %> 
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.invoice %> 
+                                <%= el.price %> 
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.description %> 
+                                <%= el.transactionTotal %> 
                             </td>
                             <td class="px-6 py-4">
-                               <a href="/dashboard/<%= el.id %>/approve" class="px-5 py-2 m-2 bg-green-600 rounded-md text-white hover:bg-green-900">Accept</a>
-                               <a href="/dashboard/<%= el.id %>/reject" class="px-5 py-2 m-2 bg-red-600 rounded-md text-white hover:bg-red-900">Reject</a>
+                                <a href="/dashboard/fields/<%=el.id%>/edit" class="p-2 m-2 bg-yellow-200 text-black hover:bg-yellow-500 rounded-md">edit</a> 
+                                <a href="/dashboard/fields/<%=el.id%>/delete" class="p-2 m-2 bg-red-600 text-white hover:bg-red-800 rounded-md">delete</a> 
                             </td>
                         </tr>
-
                          <% }) %> 
                 </table>
         </div>

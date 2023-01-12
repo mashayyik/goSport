@@ -206,11 +206,73 @@ goSport
         const {name, price, CityId, CategoryId, imageUrl} = req.body;
         const UserId = req.session.userId
         Field.create({name, price, CityId, CategoryId, UserId, imageUrl})
-        .then((_) => res.redirect('/'))
+        .then((_) => res.redirect('/dashboard/fields'))
         .catch(err => {
             res.send(err)
         }) 
     }
+
+    static showFields(req, res){
+        const id = req.session.userId
+        let fields = []
+        Field.findAll({
+            where:{
+                UserId:id
+            },
+            include:{
+                all:true
+            }
+        })
+            .then(data =>{
+               fields = data
+                return User.findByPk(id)
+            })
+            .then(user =>{
+                // res.send({fields, user})
+                res.render('fields', {fields, user})
+            })
+            .catch(err => res.send(err))
+        
+    }
+    static editField(req, res){
+        const {fieldId} = req.params
+        let categories = []
+        let cities = []
+        Category.findAll()
+            .then(data =>{
+                categories = data
+                return City.findAll()
+            })
+            .then(data =>{
+                cities = data
+                return Field.findByPk(fieldId)
+            })
+            .then(field =>{
+                // res.send({categories, cities, field})
+                res.render('editField', {categories, cities, field})
+            })
+            .catch(err => res.send(err))
+    }
+    static posteditField(req, res){
+       const {fieldId} =req.params
+       const {name, price, CityId, CategoryId, imageUrl} = req.body
+       Field.findByPk(fieldId)
+       .then(data =>{
+            data.update({name, price, CityId, CategoryId, imageUrl})
+       })
+        .then( (_) => res.redirect('/dashboard/fields'))
+        .catch(err => res.send(err))
+    }
+    static deleteField(req, res){
+        const {fieldId} =req.params
+        Field.findByPk(fieldId)
+        .then(data =>{
+             data.destroy()
+        })
+         .then( (_) => res.redirect('/dashboard/fields'))
+         .catch(err => res.send(err))
+    }
+    
     
 }
 
