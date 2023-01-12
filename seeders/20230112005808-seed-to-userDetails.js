@@ -14,7 +14,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    const userdetails = JSON.parse(fs.readFileSync('./data/userdetails.json', 'utf-8'))
+    const userdetails = JSON.parse(fs.readFileSync('./data/userdetail.json', 'utf-8'))
         .map(el =>{
           el.createdAt = el.updatedAt = new Date()
           return el
