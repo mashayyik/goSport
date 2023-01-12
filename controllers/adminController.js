@@ -18,18 +18,18 @@ class AdminController {
         // const id = 1
         let data = []
         Transaction.findAll({
-            include: {
+            include: [{
                 model:Field,
                 include:User
-            },
-            where: {
-                status: 0,
-                UserId: id
-            }
+            }, {
+                model:User
+            }], 
         })
         .then(transactions =>{
+            res.send(transactions)
+            // console.log(transactions);
             data = transactions
-            return User.findByPk(+id)
+            // return User.findByPk(+id)
         })
         .then(user =>{
             // res.send({user, data})
