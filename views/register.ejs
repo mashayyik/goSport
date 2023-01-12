@@ -15,8 +15,12 @@
       <div class="w-[50%] m-10 p-10 mx-auto rounded-lg shadow-md bg-slate-200">
         <form action="/auth/register" method="post">
               <div class="mb-6">
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
-                <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: user@gosport.com">
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Your username</label>
+                <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="gosport1">
+              </div>
+              <div class="mb-6">
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your Email</label>
+                <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: user@gosport.com">
               </div>
               <div class="mb-6">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
@@ -47,8 +51,8 @@
                 </select>
               </div>
               <div class="mb-6">
-                <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a city</label>
-                <select name="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="CityId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a city</label>
+                <select name="CityId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected disabled>Choose a city</option>
                   <% cities.forEach(el => { %>
                     <option value="<%=el.id%>"><%=el.name%></option>

@@ -12,6 +12,8 @@
     <%- include('partials/_navbar') %> 
     <p class="m-5 text-center text-3xl">Login</p>
 
+    <p><%= error %></p>
+
       <div class="w-[50%] m-10 p-10 mx-auto rounded-lg shadow-md bg-slate-200">
         <form action="/auth/login" method="post">
               <div class="mb-6">
