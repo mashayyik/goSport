@@ -2,7 +2,9 @@
  const { Field , Category} = require('../models');
 
 class Controller {
-    static home(req, res){
+    static home(req, res){  
+        const {search, categories} = req.query
+
         //aku butuh data list of field, list of category
         let fields ;
         Field.findAll()
@@ -13,7 +15,7 @@ class Controller {
             })
         })
         .then(categories => {
-            res.send({fields,categories})
+            res.render('home', {fields,categories})
         })
         .catch(err =>  res.send(err))
     }
