@@ -6,16 +6,26 @@ class AdminController {
     
      //MENAMPILKAN LIST BOOKING WHERE STATUS = 0
     static home(req, res){
-        const id = req.session.userId
+        // const id = req.session.userId
+        const id = 1
+        let transactions = []
         Transaction.findAll({
-            include: Field,
+            include: {
+                model:Field,
+                include:User
+            },
             where: {
                 status: 0,
-                UserId: id  
+                UserId: id
             }
         })
         .then(data =>{
-            res.send(data)
+            transactions = data
+            return User.findByPk(+id)
+        .then(user =>{
+            // res.send({user, data})
+            res.render('dashboard', {user, data})
+        })
         })
         .catch(err => res.send(err)) 
     }

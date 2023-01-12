@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <title>HOME</title>
 </head>
-<body>
+<body class="font-sans">
     <div class="w-[80%] mx-auto">
-    <%- include('partials/_navbar') %> 
+        <%- include('partials/_navbar') %> 
     <div class="mx-auto text-center flex justify-center items-center">
         <p class="self-center text-6xl font-semibold whitespace-nowrap text-black">go</p>
-        <p class="self-center text-6xl font-semibold whitespace-nowrap text-blue-700">Sport</p>
+        <p class="self-center text-6xl font-semibold whitespace-nowrap text-blue-700 ">Sport</p>
     </div>
         <p class="mb-5 font-bold ml-20 text-2xl text-center"> ● home</p>
         <!-- FORM SEARCH -->
@@ -22,12 +22,12 @@
             <!-- SHOW CATEGORIES -->
             <div class="mx-auto text-center mt-20 mb-5">
                 <% categories.forEach(({id, name}) => { %>
-                    <a href="/?categories=<%=id%>" class="p-2 m-2 rounded-lg bg-blue-200 text-blue-600 hover:bg-blue-700 hover:text-white"><%= name%></a>
+                    <a href="/?categories=<%=id%>" class="px-5 shadow-md py-2 m-2 rounded-lg bg-blue-200 text-blue-600 hover:bg-blue-700 hover:text-white"><%= name%></a>
                 <% }) %> 
             </div>
             <div class="w-[50%] mx-auto">
-                <form>   
-                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <form class="shadow-md">   
+                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -40,13 +40,16 @@
             
             <div class="flex flex-wrap justify-center">
                 <% fields.forEach((el) => { %>
-                    <div class="max-w-sm m-5 p-2 bg-white border border-gray-200 rounded-lg shadow-md">
+                    <div class="max-w-sm m-5 p-2 bg-white border border-gray-200 rounded-lg shadow-2xl">
                         <a href="/fields/<%=el.id%>" class="object-fill">
                             <img class="rounded-t-lg" src="<%= el.imageUrl%>" alt=""  width="400px" height="200px"/>
                         </a>
                         <div class="p-5">
+                            <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 text-center"><%= el.name%></h5>
+                            <hr><br>
                             <a href="/fields/<%=el.id%>">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><%= el.name%></h5>
+                                <h5 class="mb-2 text-[20px] tracking-tight text-gray-900">by: <b> <%= el.User.username%></b></h5>
+                                <h5 class="mb-2 text-[15px] tracking-tight text-gray-900">uploaded : <b><%= ago(el.createdAt) %></b> ago</h5>
                             </a>
                                 <br><hr><br>
                                 <p class="mb-3 text-center font-normal text-gray-700"><b><%= el.transactionTotal %> </b>users have played on this course</p>
@@ -58,7 +61,7 @@
                                                     Price
                                                 </th>
                                                 <td class="px-6 py-4">
-                                                    <%= el.price %> 
+                                                    <%= rupiah(el.price) %> 
                                                 </td>
                                             </tr>
                                             <tr class="border-b border-gray-200 ">
@@ -66,7 +69,7 @@
                                                     City
                                                 </th>
                                                 <td class="px-6 py-4">
-                                                    nama kota
+                                                    <%= el.City.name %> 
                                                 </td>
                                             </tr>
                                             <tr class="border-b border-gray-200 ">
@@ -74,7 +77,7 @@
                                                     Categories
                                                 </th>
                                                 <td class="px-6 py-4">
-                                                    Nama Katagori
+                                                    <%= el.Category.name %> 
                                                 </td>
                                             </tr>
                                     </table>

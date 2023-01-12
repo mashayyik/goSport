@@ -1,14 +1,14 @@
 
  const { Field , Category, User, City, Transaction} = require('../models');
 
- const { Op } = require("sequelize");
-
+const { Op } = require("sequelize");
+const rupiah  = require('../helpers/rupiah');
+const ago = require('../helpers/ago');
 
 class Controller {
     static home(req, res){  
     //aku butuh data list of field, list of category
         const {search, categories} = req.query
-
         let name = req.session.username
 
         let param = {
@@ -50,7 +50,8 @@ class Controller {
             })
         })
         .then(categories => {
-            res.render('home', {fields, categories, name})
+            // res.send(fields)
+            res.render('home', {fields, categories, name, rupiah, ago})
         })
         .catch(err =>  res.send(err))
     }
@@ -66,7 +67,7 @@ class Controller {
         })
         .then(data => {
             // res.send(data)
-            res.render('detailField' , {data, name})
+            res.render('detailField' , {data, name, rupiah, ago})
         })
         .catch(err =>  res.send(err))
     }
