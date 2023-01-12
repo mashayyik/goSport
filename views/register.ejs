@@ -15,24 +15,32 @@
       <div class="w-[50%] m-10 p-10 mx-auto rounded-lg shadow-md bg-slate-200">
         <form action="/auth/register" method="post">
               <div class="mb-6">
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ex: user@gosport.com">
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: user@gosport.com">
               </div>
               <div class="mb-6">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
+                <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               </div>
               <div class="mb-6">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
-                <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name</label>
+                <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               </div>
               <div class="mb-6">
-                <label for="dateOfBirth" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date Of Birth</label>
-                <input type="date" name="dateOfBirth" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="dateOfBirth" class="block mb-2 text-sm font-medium text-gray-900">Date Of Birth</label>
+                <input type="date" name="dateOfBirth" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+              </div>
+              <div class="mb-6">
+                <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a role</label>
+                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                  <option selected disabled>Choose a gender</option>
+                  <option value="user">User</option>
+                  <option value="provider">Provider</option>
+                </select>
               </div>
               <div class="mb-6">
                 <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a Gender</label>
-                <select name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                   <option selected disabled>Choose a gender</option>
                   <option value="M">Male</option>
                   <option value="F">Female</option>
