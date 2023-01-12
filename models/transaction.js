@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       Transaction.belongsTo(models.User)
       // define association here
     }
-    get formattedBookedDate(){
+
+    formattedBookedDate(){
       return this.date.toLocaleString("en-US", {dateStyle:'full', timeStyle:'medium'}) 
     } 
 
@@ -27,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       return word
     }
 
-    get statusName(){
+    statusName(){
       switch(this.status){
         case 0:
           return 'Pending'

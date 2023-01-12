@@ -49,7 +49,7 @@
                             
                         <tr class="bg-white border-b ">
                             <td class="px-6 py-4">
-                                <%= el.formattedBookedDate %> 
+                                <%= el.formattedBookedDate() %> 
                             </td>
                             <td class="px-6 py-4">
                                 <%= el.Field.name %> 
@@ -67,7 +67,7 @@
                                 <%= el.description %> 
                             </td>
                             <td class="px-6 py-4">
-                                <%= el.statusName %> 
+                                <%= el.statusName() %> 
                             </td>
                         </tr>
                          <% }) %> 
