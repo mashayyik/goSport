@@ -1,5 +1,5 @@
 
- const { Field , Category, User, City} = require('../models');
+ const { Field , Category, User, City, UserDetail} = require('../models');
 
 
 class AuthController {
@@ -8,7 +8,8 @@ class AuthController {
     }
 
     static getLogin(req, res){
-        res.render('login')
+        let error = req.query.errorLogin
+        res.render('login', {error})
     }
 
     static postLogin(req, res){
@@ -21,18 +22,15 @@ class AuthController {
         })
         .then(data => {
             if(!data) {
-                res.send('/auth/login?errorLogin=username is not found')
+                res.redirect('/auth/login?errorLogin=username is not found')
             } else if(data.password !== password){
-                res.send('/auth/login?errorLogin=password is false')
+                res.redirect('/auth/login?errorLogin=password is false')
             } else {
                // session di sini 
-            }
-            // console.log(data);
+               res.send('sukses')
+            } 
         })
-        .catch(err => res.send(err))
-
-        // console.log();
-        // res.send('ok')
+        .catch(err => res.send(err)) 
     }
     static getRegister(req, res){
        City.findAll()
@@ -43,7 +41,32 @@ class AuthController {
     }
 
     static postRegister(req, res){
-        res.send('ok')
+        const {username, email, password, name, dateOfBirth, role, gender, CityId} = req.body;
+
+        User.create({username, password, role, email})
+        .then(() => {
+            console.log('user masuk');
+            return User.findOne({
+                attributes: ['id'],
+                where: {
+                    username: username
+                }
+            })
+        })
+        .then(data => {  
+            return UserDetail.create({name, gender, CityId, dateOfBirth, UserId: data.id })
+        })
+        .then(() => {
+            console.log('user detail masuk');
+            res.send('sukses register')
+        })
+        .catch(err => {
+            if(err.name == 'SequelizeUniqueConstraintError'){
+                return res.send('username sudah ada')
+                // return res.redirect('/auth/register?')
+            }
+            res.send(err)
+        }) 
     }
 }
 
