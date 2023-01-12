@@ -30,7 +30,7 @@
     "name" : "Deby Basket Arena", 
     "price": 250000 ,
     "CityId": 1,
-    "CategoryId":1,
+    "CategoryId":6,
     "transactionTotal":0,
     "UserId": 2,
     "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWp9r7EJ265uMrmXVgxW-JYr0k3ytKBudDTA&usqp=CAU"
@@ -39,7 +39,7 @@
     "name" : "Tenis Brodie", 
     "price": 70000 ,
     "CityId": 1,
-    "CategoryId":1,
+    "CategoryId":5,
     "transactionTotal":0,
     "UserId": 2,
     "imageUrl":"http://2.bp.blogspot.com/-OBK9dCEg0vQ/WfLwvfowB-I/AAAAAAAAAsk/yck-FfIxChwSOwc2NBQMcmH9eyobxKvCACK4BGAYYCw/s1600/gambar%2Bbentuk%2Bukuran%2Blapangan%2Btenis%2Bstandar.jpg"

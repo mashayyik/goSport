@@ -1,16 +1,27 @@
 
- const { Field , Category, User} = require('../models');
+ const { Field , Category, User, City} = require('../models');
 
  const { Op } = require("sequelize");
 
 class Controller {
     static home(req, res){  
+    //aku butuh data list of field, list of category
         const {search, categories} = req.query
 
         let param = {
             include: [
-                { model: Category },
-                { model: User }
+                { 
+                    model: Category, 
+                    attributes: ['name']
+                },
+                { 
+                    model: City, 
+                    attributes: ['name']
+                },
+                { 
+                    model: User, 
+                    attributes: ['username']
+                } 
             ] 
         }
 
@@ -22,22 +33,21 @@ class Controller {
 
         if(categories) {
             param.where = { 
-                  name: { [Op.iLike]: `%${search}%`}  
+                CategoryId: categories 
             }  
         }
 
-        //aku butuh data list of field, list of category
         let fields ;
         Field.findAll(param)
         .then(data => {
-            console.log(data);
+            // console.log(data);
             fields = data
             return Category.findAll({
                 attributes: ['id', 'name']
             })
         })
         .then(categories => {
-            res.render('home', {fields,categories})
+            res.render('home', {fields, categories})
         })
         .catch(err =>  res.send(err))
     }
@@ -45,7 +55,11 @@ class Controller {
     static detailFieldById(req, res){ 
         // satu data lapangan dari id, 
         let id = req.params.fieldId
-        Field.findByPk(+id)
+        Field.findByPk(+id, {
+            include : {
+                all: true
+            }
+        })
         .then(data => {
             res.send(data)
         })
