@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -12,14 +12,23 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+    const transactions = JSON.parse(fs.readFileSync('./data/transactions.json', 'utf-8'))
+    .map(el =>{
+      el.createdAt = el.updatedAt = new Date()
+      return el
+    })
+    return queryInterface.bulkInsert('Transactions', transactions, {})
+
+
   },
 
-  async down (queryInterface, Sequelize) {
+  down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    return queryInterface.bulkDelete('Transactions', null, {})
   }
 };
