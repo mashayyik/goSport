@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../style.css">
-  <title>Add Field</title>
+  <link rel="stylesheet" href="../../../style.css">
+  <title>Sign Up</title>
 </head>
 <body>
   
@@ -15,41 +15,40 @@
         <p class="self-center text-4xl font-semibold whitespace-nowrap text-black">go</p>
         <p class="self-center text-4xl font-semibold whitespace-nowrap text-blue-700">Sport</p>
     </div>
-        <p class="mb-5 font-bold ml-20 text-center">● Add Field</p>
-        <form action="/dashboard/addField" method="post" id="myForm">
+        <p class="mb-5 font-bold ml-20 text-center">● Edit Field</p>
+        <form action="/dashboard/fields/<%=field.id%>/edit" method="post" id="myForm">
          <div class="mx-auto text-center text-red-700">
+          
          </div>
               <div class="mb-6">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Field Name</label>
-                <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Eagle basket arena">
+                <input type="text" id="name" name="name" value="<%= field.name%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Eagle basket arena">
               </div>
               <div class="mb-6">
                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price</label>
-                <input type="number" id="price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="150000">
+                <input type="number" id="price" name="price" value="<%= field.price%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="150000">
               </div>
               <div class="mb-6">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">City</label>
                 <select name="CityId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                  <option value="" selected disabled>Select</option>
                   <% cities.forEach(each => { %>
-                  <option value="<%= each.id %>"><%= each.name %></option>
+                  <option value="<%= each.id %>" <%= (each.id == field.CityId) ? "selected" : "" %> ><%= each.name %></option>
                   <% }) %>
                 </select>
               </div>
               <div class="mb-6">
                 <label for="" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
                 <select name="CategoryId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                  <option value="" selected disabled>Select</option>
                   <% categories.forEach(each => { %>
-                    <option value="<%= each.id %>"><%= each.name %></option>
-                  <% }) %>
-                </select>                 
-              </div>
+                    <option value="<%= each.id %>" <%= (each.id == field.CategoryId) ? "selected" : "" %> ><%= each.name %></option>
+                    <% }) %>
+                  </select>                 
+                </div>
               <div class="mb-6">
                 <label for="imageUrl" class="block mb-2 text-sm font-medium text-gray-900">Image Url</label>
-                <input type="text" name="imageUrl" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <input type="text" name="imageUrl" value="<%= field.imageUrl %> " class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               </div>
-              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Add new field</button>
+              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Update</button>
             </form> 
       </div>
   </div>

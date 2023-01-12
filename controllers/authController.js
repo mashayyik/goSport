@@ -103,6 +103,7 @@ class AuthController {
         }) 
     }
     static logout(req, res){
+        req.logout();
         req.session.destroy(err =>{
             if(err) return res.send(err)
             return res.redirect('/')

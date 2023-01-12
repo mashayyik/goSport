@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Transaction.belongsTo(models.Field)
+      Transaction.belongsTo(models.Field,{
+        onDelete:'cascade',
+        onUpdate:'cascade'
+      })
       Transaction.belongsTo(models.User)
       // define association here
     }
