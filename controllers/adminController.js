@@ -1,13 +1,21 @@
 
  const { Field , Category, User, City, Transaction} = require('../models');
  const { Op } = require("sequelize");
+ const nodemailer = require('nodemailer');
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth:{
+            user:"gosport.pairpoject@gmail.com",
+            pass:"tbxpiuosjuitwpig"
+        }
+    })
 
 class AdminController {
     
      //MENAMPILKAN LIST BOOKING WHERE STATUS = 0
     static home(req, res){
-        // const id = req.session.userId
-        const id = 1
+        const id = req.session.userId
+        // const id = 1
         let data = []
         Transaction.findAll({
             include: {
@@ -33,13 +41,38 @@ class AdminController {
     //ROUTES UNTUK MENGAPROVE TRANSACTION (UBAH STATUS JADI 1)
     static approveTransaction(req, res){
         const {transactionId} = req.params
-        Transaction.update({status: 1}, {
-            where: {
-                id: transactionId
-            }
-        })
+        let transaction = {}
+
+        Transaction.findByPk(transactionId,{
+            include:{
+                all:true
+            }}
+            )
         .then(data =>{
-            res.send('qapprove')
+            transaction = data
+            return data.update({'status':1})
+        }) 
+        .then((_) =>{
+           return Field.findOne({
+                where:{
+                    id: transaction.FieldId
+                }
+            })
+        })
+        .then(field =>{
+            return field.increment("transactionTotal")
+        })
+        .then((_) =>{
+            const mailOption ={
+                from: 'gosport.pairpoject@gmail.com',
+                to: `${transaction.User.email}`,
+                subject: `Booking untuk "${transaction.Field.name}" Sukses`,
+                text: `Selamat, Anda telah membooking"${transaction.Field.name}" untuk tanggal ${transaction.date} Sukses, invoice anda sebesar ${transaction.invoice}`
+            }
+            transporter.sendMail(mailOption, (err, info) =>{
+                if(err) return res.send(err)
+                res.send(`sukses`)
+            })
         })
         .catch(err => res.send(err))  
     }
@@ -47,22 +80,36 @@ class AdminController {
     //ROUTES UNTUK REJECT TRANSACTION (UBAH STATUS JADI 2)
     static rejectTransaction(req, res){
         const {transactionId} = req.params
-        Transaction.update({status: 2}, {
-            where: {
-                id: transactionId
-            }
-        })
+        let transaction = {}
+
+        Transaction.findByPk(transactionId,{
+            include:{
+                all:true
+            }}
+            )
         .then(data =>{
-            res.send('approve')
+            transaction = data
+        }) 
+        .then((_) =>{
+            const mailOption ={
+                from: 'gosport.pairpoject@gmail.com',
+                to: `${transaction.User.email}`,
+                subject: `Booking untuk "${transaction.Field.name}" Gagal`,
+                text: `Maaf, "${transaction.Field.name}" untuk tanggal ${transaction.date} tidak bisa di proses`
+            }
+            transporter.sendMail(mailOption, (err, info) =>{
+                if(err) return res.send(err)
+                res.send(`sukses`)
+            })
         })
-        .catch(err => res.send(err)) 
+        .catch(err => res.send(err))  
     }
 
 
     //MENAMPILKAN LIST BOOKING WHERE DATE >= HARI INI
     static currentTransaction(req, res){
-        // const id = req.session.userId
-        const id = 1
+        const id = req.session.userId
+        // const id = 1
         let data = []
         Transaction.findAll({
             include: {

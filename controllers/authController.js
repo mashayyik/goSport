@@ -1,5 +1,6 @@
 
  const { Field , Category, User, City, UserDetail} = require('../models');
+ const bcrypt = require('bcryptjs');
 class AuthController {
     static home(req, res){
         res.redirect('/auth/login')
@@ -19,10 +20,11 @@ class AuthController {
             }
         })
         .then(data => {
+            
             if(!data) {
                 return res.redirect('/auth/login?errors=username is not found')
             } 
-            if(data.password !== password){
+            if(!bcrypt.compareSync(password, data.password)){
                return  res.redirect('/auth/login?errors=password is false')
             } 
                //! session di sini 
