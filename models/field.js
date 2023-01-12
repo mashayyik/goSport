@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       Field.belongsTo(models.Category)
     }
 
-    ago() {
-      var seconds = Math.floor((new Date() - this.createdAt) / 1000);
+    static ago(time) {
+      var seconds = Math.floor((new Date() - time) / 1000);
     
         var interval = Math.floor(seconds / 31536000);
     
@@ -56,8 +56,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Field',
     hooks : {
-      beforeCreate : (data, option) => {  
-       data.transactionTotal = 0
+      beforeCreate : (data, option) => { 
+        data.transactionTotal = 0
       }
     }
   });

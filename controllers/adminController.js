@@ -182,7 +182,7 @@ goSport
                 data = allTransaction
                 return User.findByPk(id)
             })
-            .then(owner =>{
+            .then(owner =>{ 
                 res.render('onGoingBooking', {owner, data})
             })
             .catch(err => res.send(err)) 
