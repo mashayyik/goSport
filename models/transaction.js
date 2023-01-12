@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Transaction',
+    hooks : {
+      beforeCreate : (data, option) => { 
+       data.status = 0
+       data.invoice =  0
+      }
+    }
   });
   return Transaction;
 };
