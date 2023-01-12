@@ -84,7 +84,7 @@ class Controller {
         })
         .then(() => { 
             // res.render('detailField' , {data})
-            res.send('success')
+            res.render('success')
         })
         .catch(err =>  res.send(err))
     }

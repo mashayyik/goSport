@@ -52,6 +52,7 @@ class AdminController {
             return User.findByPk(id)
         })
         .then(owner =>{
+            // res.send({owner, data})
             res.render('dashboard', {owner, data})
         })
         .catch(err => res.send(err))
