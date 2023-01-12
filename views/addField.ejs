@@ -4,36 +4,88 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+  <title>Sign Up</title>
 </head>
 <body>
-  <h1>Add new sport field</h1>
-
-  <form action="/dashboard/addField" method="post">
-    <p>Field Name</p>
-    <input type="text" name="name" id="">
-    <p>Price</p>
-    <input type="number" name="price" id="">
-    <p>City</p>
-    <select name="CityId" id="">
-      <option value="" selected disabled>Select</option>
-      <% cities.forEach(each => { %>
-        <option value="<%= each.id %>"><%= each.name %></option>
-      <% }) %>
-    </select>
-    <p>Category</p>
-    <select name="CategoryId" id="">
-      <option value="" selected disabled>Select</option>
-      <% categories.forEach(each => { %>
-        <option value="<%= each.id %>"><%= each.name %></option>
-      <% }) %>
-    </select> 
-    <p>Image Url</p>
-    <input type="text" name="imageUrl" id="">
-    <p></p>
-    <input type="submit" value="Add new field">
-  </form>
-
-
+  
+  <div class="w-[80%] mx-auto">
+    <div class="w-[50%] m-10 p-10 mx-auto rounded-lg shadow-md bg-slate-200">
+      <div class="mx-auto text-center flex justify-center items-center">
+        <p class="self-center text-4xl font-semibold whitespace-nowrap text-black">go</p>
+        <p class="self-center text-4xl font-semibold whitespace-nowrap text-blue-700">Sport</p>
+    </div>
+        <p class="mb-5 font-bold ml-20 text-center">● Add Field</p>
+        <form action="/dashboard/addField" method="post" id="myForm">
+         <div class="mx-auto text-center text-red-700">
+          
+         </div>
+              <div class="mb-6">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Field Name</label>
+                <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Eagle basket arena">
+              </div>
+              <div class="mb-6">
+                <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price</label>
+                <input type="number" id="price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="150000">
+              </div>
+              <div class="mb-6">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">City</label>
+                <select name="CityId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                  <option value="" selected disabled>Select</option>
+                  <% cities.forEach(each => { %>
+                  <option value="<%= each.id %>"><%= each.name %></option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="mb-6">
+                <label for="" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                <select name="CategoryId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                  <option value="" selected disabled>Select</option>
+                  <% categories.forEach(each => { %>
+                    <option value="<%= each.id %>"><%= each.name %></option>
+                  <% }) %>
+                </select>                 
+              </div>
+              <div class="mb-6">
+                <label for="imageUrl" class="block mb-2 text-sm font-medium text-gray-900">Image Url</label>
+                <input type="text" name="imageUrl" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+              </div>
+              <!-- <div class="mb-6">
+                <label for="dateOfBirth" class="block mb-2 text-sm font-medium text-gray-900">Upload Image</label>
+                <input type="file" id="fileInput" name="imageUrl" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <input type="hidden" id="base" value="">
+              </div> -->
+              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Add new field</button>
+            </form> 
+      </div>
+  </div>
+  <script>
+    // document.getElementById('myForm').addEventListener('submit', () => {
+  
+    // var filesSelected = document.getElementById("fileInput").files;
+    // if (filesSelected.length > 0) {
+    //   var fileToLoad = filesSelected[0];
+    //   var fileReader = new FileReader();
+    //   fileReader.onload = function(fileLoadedEvent) {
+    //     var srcData = fileLoadedEvent.target.result; // <--- data: base64
+    //     // document.write(srcData)
+    //     document.getElementById('base').value = srcData
+    //     document.write(document.getElementById('base').value)
+    //     // do whatever you want with the base64 string
+    //   }
+    //   fileReader.readAsDataURL(fileToLoad);
+    // }
+ 
+    // })
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+ 
