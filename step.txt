@@ -1,6 +1,6 @@
 
 
-buat json city, json categoty, json user
+MAC, Buatin data.json dan seeding
 
 
 

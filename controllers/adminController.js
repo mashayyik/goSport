@@ -1,6 +1,6 @@
 class AdminController {
     
-     //MENAMPILKAN LIST BOOKING WHERE DATE >= STATUS = 0
+     //MENAMPILKAN LIST BOOKING WHERE STATUS = 0
     static home(req, res){
         res.send('ok')
     }

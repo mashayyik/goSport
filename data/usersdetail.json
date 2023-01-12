@@ -1,0 +1,16 @@
+[
+    {
+        "name" : "Hayyik Lanaa R",
+        "gender": "M",
+        "CityId": 4,
+        "dateOfBirth": "1998-09-11",
+        "UserId": 1
+    },
+    {
+        "name" : "Lintang Macnesa",
+        "gender": "M",
+        "CityId": 2,
+        "dateOfBirth": "1998-09-11",
+        "UserId": 2
+    }
+]
