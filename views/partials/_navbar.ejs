@@ -1,24 +1,24 @@
-<div class="ml-20 container flex flex-wrap items-center justify-between mx-auto text-2xl">
-    <div> 
-      <ul class="flex flex-col p-4 mt-4">
+<div class="container text-2xl flex justify-between items-center">
+      <div class="flex flex-col p-4 mt-4">
         <% if(name){ %>
-          <li>
+          <div>
             <p class="block py-2 pl-3 pr-4 text-black">Hi, <b><%= name %></b></p>
-          </li>
+          </div>
             <% } %>  
-        <li>
+        <div>
           <a href="/" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">Home</a>
-        </li>
+        </div>
+      </div>
+      <div>
         <% if(name){ %>
-          <li>
-            <a href="/auth/logout" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">logout</a>
-          </li>
+          <div>
+            <a href="/auth/logout" class="block py-2 pl-3 pr-4  text-blue-600" aria-current="page">logout</a>
+          </div>
         <% } else { %>
-        <li>
+        <div>
           <a href="/auth/login" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">Login</a>
-        </li>
+        </div>
         <% } %> 
-      </ul>
-    </div>
+      </div>
   </div>
  
