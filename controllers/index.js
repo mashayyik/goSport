@@ -1,14 +1,36 @@
 
- const { Field , Category} = require('../models');
+ const { Field , Category, User} = require('../models');
+
+ const { Op } = require("sequelize");
 
 class Controller {
     static home(req, res){  
         const {search, categories} = req.query
 
+        let param = {
+            include: [
+                { model: Category },
+                { model: User }
+            ] 
+        }
+
+        if(search) {
+            param.where = { 
+                  name: { [Op.iLike]: `%${search}%`}  
+            }  
+        }
+
+        if(categories) {
+            param.where = { 
+                  name: { [Op.iLike]: `%${search}%`}  
+            }  
+        }
+
         //aku butuh data list of field, list of category
         let fields ;
-        Field.findAll()
+        Field.findAll(param)
         .then(data => {
+            console.log(data);
             fields = data
             return Category.findAll({
                 attributes: ['id', 'name']
