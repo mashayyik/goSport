@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <title>Ongoing List</title>
 </head>
 <body>
     <div class="w-[80%] mx-auto">
         <div class="m-10 text-4xl text-center bold">Welcome, <%= user.username %></div>
-        <div class="m-10">
+        <div class="m-10 text-center bold">
+        </div> 
+        <div class="text-4xl bold text-center">Pending Booking List %></div>
+        <div class="m-3">
+            <a href="/dashboard" class="text-white bg-green-700 p-2 rounded-lg hover:bg-green-900">GO TO PENDING LIST</a></div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 ">
                     <thead class="text-xs text-white uppercase bg-blue-500">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
-                                No
-                            </th>
                             <th scope="col" class="px-6 py-3">
                                 Name of Field
                             </th>
@@ -43,9 +44,6 @@
                             
                         <tr class="bg-white border-b ">
                             <td class="px-6 py-4">
-                                <%= ++index %> 
-                            </td>
-                            <td class="px-6 py-4">
                                 <%= el.Field.name %> 
                             </td>
                             <td class="px-6 py-4">
@@ -64,6 +62,7 @@
                                 <%= el.description %> 
                             </td>
                         </tr>
+
                          <% }) %> 
                 </table>
         </div>
