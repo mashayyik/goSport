@@ -8,7 +8,7 @@
     <title>HOME</title>
 </head>
 <body class="font-sans">
-    <div class="w-[80%] mx-auto">
+    <div class="w-[90%] mx-auto">
         <%- include('partials/_navbar') %> 
     <div class="mx-auto text-center flex justify-center items-center">
         <p class="self-center text-6xl font-semibold whitespace-nowrap text-black">go</p>
@@ -16,19 +16,10 @@
     </div>
         <p class="mb-5 font-bold ml-20 text-2xl text-center"> ● home</p>
         <!-- FORM SEARCH -->
-        <div class="my-10 mx-auto">
+        <div class="my-10 mx-auto mb-5">
            
-
-            <!-- SHOW CATEGORIES -->
-            <div class="mx-auto text-center mt-20 mb-5">
-                    <a href="/" class="px-5 shadow-md py-2 m-2 rounded-lg bg-blue-200 text-blue-600 hover:bg-blue-700 hover:text-white">All</a>
-                <% categories.forEach(({id, name}) => { %>
-                    <a href="/?categories=<%=id%>" class="px-5 shadow-md py-2 m-2 rounded-lg bg-blue-200 text-blue-600 hover:bg-blue-700 hover:text-white"><%= name%></a>
-                <% }) %> 
-            </div>
-
-            <div class="w-[50%] mx-auto">
-                <form class="shadow-md">   
+            <div class="w-[40%] mt-20 mx-auto mb-5">
+                <form class="shadow-md ">   
                     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -39,6 +30,16 @@
                     </div>
                 </form>
             </div>
+
+            <!-- SHOW CATEGORIES -->
+            <div class="mx-auto text-center  mb-5">
+                    <a href="/" class="px-5 shadow-md py-2 m-2 rounded-lg bg-blue-200 text-blue-600 hover:bg-blue-700 hover:text-white">All</a>
+                <% categories.forEach(({id, name}) => { %>
+                    <a href="/?categories=<%=id%>" class="px-5 shadow-md py-2 m-2 rounded-lg bg-blue-200 text-blue-600 hover:bg-blue-700 hover:text-white"><%= name%></a>
+                <% }) %> 
+            </div>
+
+
             
             <div class="flex flex-wrap justify-center">
                 <% fields.forEach((el) => { %>

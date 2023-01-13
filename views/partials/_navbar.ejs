@@ -1,29 +1,30 @@
-<div class="container text-xl flex justify-between items-center">
-      <div class="flex flex-col p-4 mt-4">
-        <% if(session.username){ %>
-          <div>
-            <p class="block py-2 pl-3 pr-4 text-black">Hi, <b><%= session.username %></b></p>
-          </div>
-            <% } %>  
+
+  <div class="container text-xl flex justify-between items-center my-auto">
+    <div class="flex flex-col p-4 mt-4">
+      <% if(session.username){ %>
         <div>
-          <a href="/" class="block py-2 pl-3 pr-4 text-blue-600" aria-current="page">Home</a>
+          <p class="text-3xl block py-2 pl-3 pr-4 text-black">Hi, <b><%= session.username %></b></p>
         </div>
-        <% if (session.role == 'provider') { %>
-          <div>
-            <a href="/dashboard" class="block py-2 pl-3 pr-4 text-yellow-800" aria-current="page">Dashboard</a>
-          </div>
-        <% } %>
-      </div>
-     
-      <div class="mr-5">
-        <% if(session.username){ %>
-          <div>
-            <a href="/logout" class="block py-2 pl-3 pr-4 text-red-600 font-bold" aria-current="page">Logout</a>
-          </div>
-        <% } else { %>
+          <% } %>  
+        </div>
+        
+      <div class="mr-5 flex border-solid">
         <div>
-          <a href="/auth/login" class="block py-2 pl-3 pr-4 text-green-800" aria-current="page">Login</a>
+          <a href="/" class="block py-2 pl-3 pr-4" aria-current="page">Home</a>
         </div>
-        <% } %> 
+      <% if (session.role == 'provider') { %>
+        <div>
+          <a href="/dashboard" class="block py-2 pl-3 pr-4 text-yellow-800" aria-current="page">Dashboard</a>
+        </div>
+      <% } %>
+      <% if(session.username){ %>
+        <div>
+          <a href="/logout" class="block py-2 pl-3 pr-4 text-red-600  aria-current="page">Logout</a>
+        </div>
+      <% } else { %>
+      <div>
+        <a href="/auth/login" class="block py-2 pl-3 pr-4 text-green-800" aria-current="page">Login</a>
       </div>
-  </div>
+      <% } %> 
+    </div>
+</div> 
