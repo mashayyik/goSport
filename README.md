@@ -27,7 +27,7 @@ Sport's Field Booking App
 5. View Engine  : EJS
 6. Front End    : EJS, Tailwindcss
 
-## ERD
+## ERD Schema
 <img src="./schema_goSport.png" width=80% height=80%>
 
 
@@ -68,7 +68,7 @@ Sport's Field Booking App
 </figure>
 <hr>
 <img src="./assets/add-field.png" width=80% height=80%>
-  <figcaption>Fields List (provider login required)</figcaption>
+  <figcaption>Add Fields (provider login required)</figcaption>
 </figure>
 <hr>
 <img src="./assets/email-recieved.png" width=80% height=80%>
