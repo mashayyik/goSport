@@ -25,17 +25,20 @@
                 <input type="text" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="gosport1">
               </div>
               <div class="mb-6">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your Email</label>
-                <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: user@gosport.com">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name</label>
+                <input type="text" placeholder="Go Sport Inc" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               </div>
+          <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="mb-6">
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your Email</label>
+              <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: user@gosport.com">
+            </div>
               <div class="mb-6">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
-                <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <input type="password" placeholder="secure" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
               </div>
-              <div class="mb-6">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name</label>
-                <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-              </div>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
               <div class="mb-6">
                 <label for="dateOfBirth" class="block mb-2 text-sm font-medium text-gray-900">Date Of Birth</label>
                 <input type="date" name="dateOfBirth" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -48,6 +51,8 @@
                   <option value="provider">Provider</option>
                 </select>
               </div>
+              </div>
+              <div class="grid md:grid-cols-2 md:gap-6">
               <div class="mb-6">
                 <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a Gender</label>
                 <select name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -65,13 +70,14 @@
                   <% }) %>
                 </select>
               </div>
+              </div>
               <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Register</button>
             </form>
-            <div class="m-5 text text-center">
+            <div class="mt-10 text text-center">
               already have account?
               <a href="/auth/login" class="p-2 m-2 bg-green-600 text-white rounded-lg">Sign in</a>
             </div>
-            <div class="m-5 text text-center mt-10">
+            <div class="m-5 text text-center mt-5">
               <a href="/" class="p-2 text-blue-700 rounded-lg">No, I want to login as guest</a>
             </div>
       </div>
