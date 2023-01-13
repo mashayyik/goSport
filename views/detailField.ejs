@@ -8,28 +8,29 @@
     <title><%= data.name %> </title>
 </head>
 <body>
-    <div class="w-[80%] mx-auto">
+    <div class="w-[80%] mx-auto" >
     <%- include('partials/_navbar') %> 
-        <p class="m-5 text-center text-3xl"><%= data.name %></p>
+    <p class="m-5 text-center text-3xl font-bold"><%= data.name %></p>
+    <p class="m-5 text-center">owner : <b class="text-2xl font-bold"> <%= data.User.username %></b></p>
+    <br><hr><br>
+    <div class="flex whitespace-nowrap justify-between" >
 
-       <div class="mx-auto flex justify-center m-10 ">
-        <img class="h-auto max-w-full" src="<%= data.imageUrl%>" alt="image description">
+       <div class="mx-auto">
+        <figure class="max-w-lg shadow-xl rounded-xl bg-slate-700">
+            <img class="h-auto max-w-full rounded-lg" src="<%= data.imageUrl%>" alt="image description">
+            <figcaption class="m-3 text-center font-normal text-white"><b class="text-yellow-300 text-xl font-bold"><%= data.transactionTotal %> </b>users have played on this fields</figcaption>
+          </figure>
+          <div class="text-xl m-1 text-green-800 text-center">
+            <p><%= data.City.name %> </p>
+        </div>
        </div>
 
         
 
-       <div class="mx-auto justify-center m-10 text-center">
-            <div class="m-5">
-                <div class="text-2xl m-2">
-                    <p><%= data.City.name %> </p>
-                </div>
-                <p>only :</p>
-                <p class="text-3xl"><%=rupiah(data.price)%>/hour </p>
-                <p class="m-3 text-center font-normal text-gray-700"><b><%= data.transactionTotal %> </b>users have played on this course</p>
-            </div>
-            <div class="w-[50%] mx-auto p-5 m-3 bg-slate-100 rounded-md shadow-lg">
+       <div class="mx-auto justify-center text-center">
+            <div class="mx-auto p-5 bg-slate-100 rounded-md shadow-xl">
                 <form action="/transaction/<%=data.id%>/add" method="post">
-                    <div class="text-3xl font-bold m-5 text-blue-700">
+                    <div class="text-3xl font-bold m-2 text-blue-700">
                         BOOK NOW!
                     </div>
                     <div class="grid md:grid-cols-2 md:gap-6">
@@ -39,21 +40,22 @@
                         </div>
                         <div class="mb-6">
                             <label for="duration" class="block mb-2 text-sm font-medium text-gray-900">Duration (hours)</label>
-                            <input type="number" name="duration" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <input type="number" name="duration" placeholder="duration" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                     </div>
                     
                     <div class="mb-6">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Description</label>
-                        <input type="text" name="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    </div>
-                    
-                    
+                        <input type="text" name="description" placeholder="i want used yellow ball" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    </div>              
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">BOOK NOW</button>
-
                 </form>
             </div>
-       </div>
+            <div class="mt-5">    
+                <p class="">start from :</p>
+                <p class="text-2xl"><b class="text-3xl"><%=rupiah(data.price)%></b>/hour </p>
+            </div>
+        </div>
 
         
 </body>
