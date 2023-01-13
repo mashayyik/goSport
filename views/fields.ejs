@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
-    <title>Document</title>
+    <title>GoSport</title>
 </head>
 <body>
     <div class="w-[80%] mx-auto">
@@ -15,10 +15,10 @@
          <div class="m-5 text-3xl text-center bold"><%= session.username %>'s Field Assets</div>
         <div class="m-3 flex">
             <div class="flex">
-            <a href="/dashboard/addField" class="mx-2 text-black bg-yellow-400 p-2 rounded-lg hover:bg-yellow-500">Add New Field</a></div>
+            <a href="/dashboard/addField" class="mx-2 px-5 text-white shadow-md bg-slate-800 p-2 rounded-lg hover:bg-slate-900">Add New Field</a></div>
             <a href="/dashboard" class="text-white mx-2 bg-green-700 p-2 rounded-lg hover:bg-green-900">Back to Dashboard</a></div>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 ">
+            <div class="relative overflow-x-auto shadow-3xl sm:rounded-lg  ">
+                <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-white uppercase bg-blue-500">
                         <tr>
                             <th scope="col" class="px-6 py-3">
@@ -73,8 +73,8 @@
                                 <%= el.transactionTotal %> 
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/dashboard/fields/<%=el.id%>/edit" class="p-2 m-2 bg-yellow-200 text-black hover:bg-yellow-500 rounded-md">edit</a> 
-                                <a href="/dashboard/fields/<%=el.id%>/delete" class="p-2 m-2 bg-red-600 text-white hover:bg-red-800 rounded-md">delete</a> 
+                                <a href="/dashboard/fields/<%=el.id%>/edit" class="px-5 py-2 m-2 bg-yellow-400 text-black hover:bg-yellow-500 rounded-md shadow-lg">Edit</a> 
+                                <a href="/dashboard/fields/<%=el.id%>/delete" class="px-5 py-2 m-2 bg-red-600 text-white hover:bg-red-800 rounded-md shadow-lg">Delete</a> 
                             </td>
                         </tr>
                          <% }) %> 
