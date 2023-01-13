@@ -30,49 +30,49 @@ Sport's Field Booking App
 6. Front End    : EJS, Tailwindcss
 
 ## ERD
-<img src="./schema_goSport.png" width=40% height=40%>
+<img src="./schema_goSport.png" width=80% height=80%>
 
 
 
 ## OVERVIEW
 <figure>
- <img src="./assets/form.png" width=35% height=35%>
+ <img src="./assets/form.png" width=80% height=80%>
   <figcaption>Login & Register Form</figcaption>
 </figure>
 <hr>
 <figure>
-<img src="./assets/home.png" width=35% height=35%>
+<img src="./assets/home.png" width=80% height=80%>
   <figcaption>Home Landing Page</figcaption>
 </figure>
 <hr>
 <figure>
-<img src="./assets/home-filtered.png" width=35% height=35%>
+<img src="./assets/home-filtered.png" width=80% height=80%>
   <figcaption>Home With Filtered Category</figcaption>
 </figure>
 <hr>
 <figure>
-<img src="./assets/detail-each-field.png" width=35% height=35%>
+<img src="./assets/detail-each-field.png" width=80% height=80%>
   <figcaption>Detail's Field Page</figcaption>
 </figure>
 <hr>
 <figure>
-<img src="./assets/success-transaction.png" width=35% height=35%>
+<img src="./assets/success-transaction.png" width=80% height=80%>
   <figcaption>Transaction Success (user login required)</figcaption>
 </figure>
 <hr>
 <figure>
-<img src="./assets/dashboard-pending.png" width=35% height=35%>
+<img src="./assets/dashboard-pending.png" width=80% height=80%>
   <figcaption>Dashboard (provider login required)</figcaption>
 </figure>
 <hr>
-<img src="./assets/dashboard-schedule.png" width=35% height=35%>
+<img src="./assets/dashboard-schedule.png" width=80% height=80%>
   <figcaption>Dashboard Queue (provider login required)</figcaption>
 </figure>
 <hr>
-<img src="./assets/add-field.png" width=35% height=35%>
+<img src="./assets/add-field.png" width=80% height=80%>
   <figcaption>Fields List (provider login required)</figcaption>
 </figure>
 <hr>
-<img src="./assets/email-recieved.png" width=35% height=35%>
+<img src="./assets/email-recieved.png" width=80% height=80%>
   <figcaption>Email Received to User when transaction is updated</figcaption>
 </figure>
