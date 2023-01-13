@@ -4,7 +4,7 @@ Sport's Field Booking App
 
 ## Contributtor
 1. Hayyik Lanaa R as Fullstack
-2. Lintang Macnesa as Fullstach
+2. Lintang Macnesa as Fullstack
 
 
 ## Feature
