@@ -1,6 +1,4 @@
 # goSport
-
-## On Demand App
 Sport's Field Booking App
 
 
