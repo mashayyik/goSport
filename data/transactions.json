@@ -1,38 +1,20 @@
 [
   {
-    "UserId":1,
-    "FieldId":1,
+    "UserId":3,
+    "FieldId":2,
     "date":"2023-01-14",
-    "description":"Bola nya yg baru ya",
-    "status":0,
-    "invoice":0,
-    "duration":120
+    "description":"i want use 4 ball (for club's trainning)",
+    "status":1,
+    "invoice":165000,
+    "duration":1
   },
   {
-    "UserId":2,
+    "UserId":1,
     "FieldId":2,
     "date":"2023-01-15",
-    "description":"Shuttlecock nya yg baru ya",
-    "status":0,
-    "invoice":0,
-    "duration":120
-  },
-  {
-    "UserId":2,
-    "FieldId":2,
-    "date":"2023-01-14",
-    "description":"Bola nya yg baru ya",
-    "status":0,
-    "invoice":0,
-    "duration":120
-  },
-  {
-    "UserId":1,
-    "FieldId":1,
-    "date":"2023-01-14",
-    "description":"Bershikan lapangan mas ",
-    "status":0,
-    "invoice":0,
-    "duration":120
+    "description":"i want use yellow ball, please",
+    "status":1,
+    "invoice":330000,
+    "duration":2
   }
 ]

@@ -1,14 +1,14 @@
 [
     {
-        "username":"hayyik",
-        "password": "hayyik123",
-        "role" : "provider",
-        "email": "mashayyik@gmail.com"
+        "username":"mashayyik",
+        "password": "$2a$05$cG.Ae2sO.2zSV6qyXz7ioephWZndHNaVY6oFb/D5.XJuUXvY4UL32",
+        "role" : "user",
+        "email": "sample1@sample.com"
     },
     {
         "username": "macnesa",
-        "password": "macnesa123",
-        "role" : "user",
-        "email" : "mmacnesa@gmail.com"
+        "password": "$2a$05$3hS/k28IHPvyEDjEMtozKuME2vgIbrB1x0xO95IgAW8moYvlrp8IG",
+        "role" : "provider",
+        "email": "sample21@sample.com"
     }
 ]

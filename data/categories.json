@@ -1,20 +1,23 @@
 [
   {
-    "name": "Futsall"
+    "name": "Futsal"
   },
   {
-    "name": "Sepak Bola"
+    "name": "Football"
   },
   {
-    "name": "Bulutangkis"
+    "name": "Badminton"
   },
   {
-    "name": "Voly"
+    "name": "Volly"
   },
   {
     "name": "Tenis"
   },
   {
-    "name": "Basket"
+    "name": "BasketBall"
+  },
+  {
+    "name": "Golf"
   } 
 ]
