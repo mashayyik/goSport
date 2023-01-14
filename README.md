@@ -20,7 +20,7 @@ Sport's Field Booking App
 
 
 ## Specitification
-1. Back-end     : NPM, Express.js
+1. Back-end     : NPM, Express.js, Bcryptjs, Nodemailer
 2. Database     : Postgres SQL
 3. ORM          : Sequelize
 4. Middleware   : express-session, express static, express body parser
